@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -113,7 +113,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="nameChanged:" destination="j8L-br-HbL" eventType="editingChanged" id="twu-X6-tP5"/>
+                                    <action selector="firstNameChanged:" destination="j8L-br-HbL" eventType="editingChanged" id="twu-X6-tP5"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CLG-xg-deW" userLabel="Last Name">
@@ -122,15 +122,21 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="lastNameChanged:" destination="j8L-br-HbL" eventType="editingChanged" id="bbP-GI-60N"/>
+                                </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="xxx-xxx-xxxx" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wAp-DA-fvm" userLabel="Phone Number">
-                                <rect key="frame" x="318" y="257" width="168" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="xxx" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wAp-DA-fvm" userLabel="Area Code">
+                                <rect key="frame" x="318" y="257" width="44" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
+                                <connections>
+                                    <action selector="areaCodeChanged:forEvent:" destination="j8L-br-HbL" eventType="editingChanged" id="9h8-7x-jTy"/>
+                                </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="xxx@xxx.xxx" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Kn-wE-NFB" userLabel="Email">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="xxx@xxx.xxx" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Kn-wE-NFB" userLabel="Email">
                                 <rect key="frame" x="318" y="310" width="222" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -148,22 +154,38 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="xxx" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fZU-cP-qUw" userLabel="Phone Number Last">
+                                <rect key="frame" x="442" y="257" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="xxx" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pHy-UE-WPC" userLabel="Phone Number Middle">
+                                <rect key="frame" x="380" y="257" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="yhk-ER-ed7"/>
                     </view>
                     <navigationItem key="navigationItem" id="7Nk-Zy-mz9"/>
                     <connections>
+                        <outlet property="PhoneNumberLast" destination="fZU-cP-qUw" id="U3v-aZ-vRt"/>
+                        <outlet property="PhoneNumberMiddle" destination="pHy-UE-WPC" id="4lk-Ra-gZU"/>
+                        <outlet property="areaCodeField" destination="wAp-DA-fvm" id="lG6-uh-3AF"/>
                         <outlet property="firstNameField" destination="OXq-6f-pph" id="gZY-9u-Ocu"/>
                         <outlet property="lastNameField" destination="CLG-xg-deW" id="KTn-5q-zFF"/>
-                        <outlet property="phoneNumberField" destination="wAp-DA-fvm" id="lG6-uh-3AF"/>
                         <outlet property="studentEmailField" destination="1Kn-wE-NFB" id="hNs-Md-eA2"/>
                         <outlet property="submitButton" destination="S8P-fj-gUu" id="vus-Xf-MS9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VYu-HK-uG8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2155" y="-47"/>
+            <point key="canvasLocation" x="2154.6875" y="-47.4609375"/>
         </scene>
     </scenes>
 </document>

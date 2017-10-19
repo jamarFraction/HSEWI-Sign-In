@@ -26,16 +26,17 @@ class StudentInfoViewController: UIViewController {
     //Variables connected to text fields and buttons on the ViewController
     @IBOutlet var firstNameField: UITextField!
     @IBOutlet var lastNameField: UITextField!
-    @IBOutlet var phoneNumberField: UITextField!
+    @IBOutlet var areaCodeField: UITextField!
+    @IBOutlet var PhoneNumberMiddle: UITextField!
+    @IBOutlet var PhoneNumberLast: UITextField!
     @IBOutlet var studentEmailField: UITextField!
     @IBOutlet var submitButton: UIButton!
     
     
     
-    @IBAction func nameChanged(_ sender: UITextField) {
+    @IBAction func firstNameChanged(_ sender: UITextField) {
         
         //I know, I know, this is super explicitly coded but I can't cast the UITextField text to a string and still be able to use count :(
-    
         let firstName: String = firstNameField.text!
         let firstNameLength: Int = firstName.count
         
@@ -53,6 +54,76 @@ class StudentInfoViewController: UIViewController {
         }
         
     }
+    
+    @IBAction func lastNameChanged(_ sender: UITextField) {
+        
+        let lastName: String = lastNameField.text!
+        let lastNameLength: Int = lastName.count
+        
+        //check to see if the length of the text in the field is at least 1 character long
+        if lastNameLength >= 1 {
+            
+            //if so, enable the button
+            areaCodeField.isEnabled = true
+            
+        }else{
+            
+            //nope, you ain't going nowhere FAM
+            areaCodeField.isEnabled = false
+            
+        }
+    }
+    
+    
+    @IBAction func areaCodeChanged(_ sender: UITextField, forEvent event: UIEvent) {
+        
+        //Put the textField text into a string
+        var areaCodeText : String = sender.text!
+        
+        //create a string "bank" of acceptable data
+        let intBank: String = "0123456789"
+        
+        //Create an integer variable and set it's value equal to the length of the text field
+        var areaCodeLength: Int = areaCodeText.count
+        
+        //If the length of the text in the field will be longer than 3, or
+        //if the last character input to the text field is not in our
+        //bank
+        //Only do this if there is text in the box
+        if areaCodeLength >= 1{
+            
+            if areaCodeLength > 3 || !intBank.contains(areaCodeText.last!){
+                
+                //set the text variable to the original text, dropping the last character
+                areaCodeText = String (areaCodeText.characters.dropLast())
+                
+                //decrement the length so we don't have issues for enabling/disbling the next field
+                areaCodeLength -= 1
+                
+                //set the textfield text to our varible
+                areaCodeField.text = areaCodeText
+                
+            }
+            
+        }
+        
+        
+        //test for enabling the next field
+        if areaCodeLength >= 1{
+            
+            //enable
+            PhoneNumberMiddle.isEnabled = true
+            
+        }else{
+            
+            //disable
+            PhoneNumberMiddle.isEnabled = false
+        }
+        
+        
+        
+    }
+    
     
     
     
@@ -84,5 +155,8 @@ class StudentInfoViewController: UIViewController {
         }
     
     }
+    
+    
+    
    
 }
